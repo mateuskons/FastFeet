@@ -12,7 +12,8 @@ const app = express()
 app.use(express.json())
 
 app.use(
-    jwt({ secret: privateKey, algorithms: ['HS256']}).unless({ path: ['/usuario/create', '/usuario/login', '/usuario/update', '/usuario/delete', '/usuario/show'] })
+    jwt({ secret: privateKey, algorithms: ['HS256']}).unless({ path: ['/usuario/create', '/usuario/login', '/usuario/update', '/usuario/delete', '/usuario/show',
+      '/admin/create', '/admin/login', '/admin/update', '/admin/delete', '/admin/show'] })
 );
 
 app.use(function (err, req, res, next) {

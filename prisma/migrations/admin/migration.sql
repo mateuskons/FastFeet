@@ -1,13 +1,10 @@
 -- CreateTable
-CREATE TABLE "usuario" (
+CREATE TABLE "admin" (
     "id" TEXT NOT NULL,
     "nome" TEXT NOT NULL,
     "cpf" TEXT NOT NULL,
-    "telefone" TEXT NOT NULL,
     "senha" TEXT NOT NULL,
 
-    CONSTRAINT "usuario_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "admin_pkey" PRIMARY KEY ("id")
 );
-
-
 

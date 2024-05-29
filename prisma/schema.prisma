@@ -22,3 +22,11 @@ model Usuario {
   @@map("usuario")
 }
 
+model Admin {
+  id String @id @default(uuid())
+  nome String
+  cpf String
+  senha String
+  @@map("admin")
+}
+

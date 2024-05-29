@@ -4,38 +4,35 @@ const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const privateKey = require("../private-key")
 
-
-class UsuarioController {
-
+class AdminController {
 
     async create(request, response) {
         try {
-            const { nome, cpf, telefone, senha } = request.body
+            const { nome, cpf, senha } = request.body
             let hashSenha = bcrypt.hashSync(senha, 10)
 
 
-            const usuario = await prisma.usuario.create({
+            const admin = await prisma.admin.create({
                 data: {
                     nome,
                     cpf,
-                    telefone,
                     senha: hashSenha
                 },
             })
 
-
-            response.json(usuario)
+            response.json(admin)
         } catch (err) {
             console.log(err)
             return response.status(409).send()
         }
     }
 
+
     async show(request, response) {
         try {
-            const usuarios = await prisma.usuario.findMany();
+            const admins = await prisma.admin.findMany();
 
-            response.json(usuarios)
+            response.json(admins)
 
         } catch (err) {
             console.log(err)
@@ -46,17 +43,16 @@ class UsuarioController {
     async update(request, response) {
         try {
 
-            const { nome, cpf, telefone } = request.body
+            const { nome, cpf } = request.body
             const { id } = request.params
 
-            const result = await prisma.usuario.update({
+            const result = await prisma.admin.update({
                 where: {
                     id: id,
                 },
                 data: {
                     nome: nome,
                     cpf: cpf,
-                    telefone: telefone,
                 },
             });
 
@@ -75,7 +71,7 @@ class UsuarioController {
             const { id } = request.params
 
 
-            const deleteusuario = await prisma.usuario.delete({
+            const deleteadmin = await prisma.admin.delete({
                 where: {
                     id: id,
                 },
@@ -93,19 +89,19 @@ class UsuarioController {
     async login(request, response) {
         try {
             const { cpf, senha } = request.body
-            const usuario = await prisma.usuario.findFirst({ where: { cpf }})
-            const senhaValida = bcrypt.compareSync(senha, usuario.senha)
-            delete(usuario.senha)  
+            const admin = await prisma.admin.findFirst({ where: { cpf }})
+            const senhaValida = bcrypt.compareSync(senha, admin.senha)
+            delete(admin.senha)  
             if(senhaValida){
                 const token = jsonwebtoken.sign(
                     { 
-                        usuarioId: usuario.id,
-                        cpf: usuario.cpf,
+                        adminId: admin.id,
+                        cpf: admin.cpf,
                     },
                     privateKey,
                     { expiresIn: '60m' }
                 )
-                return response.json({data: {usuario, token}})
+                return response.json({data: {admin, token}})
             }
             return response.status(400).send()
             
@@ -118,4 +114,4 @@ class UsuarioController {
     }
 }
 
-module.exports = UsuarioController
+module.exports = AdminController
