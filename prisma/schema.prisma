@@ -30,3 +30,9 @@ model Admin {
   @@map("admin")
 }
 
+model Entrega {
+    id String @id @default(uuid())
+    endereco String
+    entregue  Boolean
+    @@map("entrega")
+}
