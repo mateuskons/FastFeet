@@ -36,3 +36,12 @@ model Entrega {
     entregue  Boolean
     @@map("entrega")
 }
+
+model Destinatario {
+    id String @id @default(uuid())
+    nome String
+    telefone String
+    endereco String
+    CEP String
+    @@map("destinatario")
+}

@@ -13,7 +13,8 @@ app.use(express.json())
 
 app.use(
     jwt({ secret: privateKey, algorithms: ['HS256']}).unless({ path: ['/usuario/create', '/usuario/login', '/usuario/update', '/usuario/delete', '/usuario/show',
-      '/admin/create', '/admin/login', '/admin/update', '/admin/delete', '/admin/show', '/entrega/create', '/entrega/update', '/entrega/delete', '/entrega/showEntrega'] })
+      '/admin/create', '/admin/login', '/admin/update', '/admin/delete', '/admin/show', '/entrega/create', '/entrega/update', '/entrega/delete', '/entrega/showEntrega',
+      '/destinatario/create', '/destinatario/update', '/destinatario/delete', '/destinatario/show'] })
 );
 
 app.use(function (err, req, res, next) {
