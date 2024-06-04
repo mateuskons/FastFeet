@@ -11,19 +11,19 @@ const routes = require('./routes')
 const app = express()
 app.use(express.json())
 
-app.use(
-    jwt({ secret: privateKey, algorithms: ['HS256']}).unless({ path: ['/usuario/create', '/usuario/login', '/usuario/update', '/usuario/delete', '/usuario/show',
-      '/admin/create', '/admin/login', '/admin/update', '/admin/delete', '/admin/show', '/entrega/create', '/entrega/update', '/entrega/delete', '/entrega/showEntrega',
-      '/destinatario/create', '/destinatario/update', '/destinatario/delete', '/destinatario/show'] })
-);
+//app.use(
+    //jwt({ secret: privateKey, algorithms: ['HS256']}).unless({ path: ['/usuario/create', '/usuario/login', '/usuario/update', '/usuario/delete', '/usuario/show',
+      //'/admin/create', '/admin/login', '/admin/update', '/admin/delete', '/admin/show', '/entrega/create', '/entrega/update', '/entrega/delete', '/entrega/showEntrega',
+      //'/destinatario/create', '/destinatario/update', '/destinatario/delete', '/destinatario/show'] })
+//);
 
-app.use(function (err, req, res, next) {
-    if (err.name === "UnauthorizedError") {
-      res.status(401).send({message: "invalid token"});
-    } else {
-      next(err);
-    }
-});
+//app.use(function (err, req, res, next) {
+    //if (err.name === "UnauthorizedError") {
+      //res.status(401).send({message: "invalid token"});
+    //} else {
+      //next(err);
+   // }
+//});
 
 app.use(routes)
 
