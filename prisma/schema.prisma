@@ -34,6 +34,7 @@ model Entrega {
     id String @id @default(uuid())
     endereco String
     entregue  Boolean
+    devolvida  Boolean
     @@map("entrega")
 }
 

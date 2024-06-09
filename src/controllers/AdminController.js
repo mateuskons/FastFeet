@@ -43,7 +43,8 @@ class AdminController {
     async update(request, response) {
         try {
 
-            const { nome, cpf } = request.body
+            const { nome, cpf, senha } = request.body
+            let hashSenha = bcrypt.hashSync(senha, 10)
             const { id } = request.params
 
             const result = await prisma.admin.update({
@@ -53,6 +54,7 @@ class AdminController {
                 data: {
                     nome: nome,
                     cpf: cpf,
+                    senha: hashSenha
                 },
             });
 

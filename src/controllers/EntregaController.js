@@ -4,12 +4,13 @@ const prisma = new PrismaClient();
 class EntregaController {
     async create(request, response) {
         try {
-            const { endereco, entregue } = request.body
+            const { endereco, entregue, devolvida } = request.body
 
             const entrega = await prisma.entrega.create({
                 data: {
                     endereco,
-                    entregue
+                    entregue,
+                    devolvida
                 },
             })
 
@@ -24,9 +25,9 @@ class EntregaController {
     async showEntrega(request, response) {
         try {
             const { id } = request.params
-            const refeicoes = await prisma.entrega.findFirst({ where: { id } })
+            const entregas = await prisma.entrega.findFirst({ where: { id } })
 
-            response.json(refeicoes)
+            response.json(entregas)
 
         }
         catch (err) {
@@ -37,7 +38,7 @@ class EntregaController {
 
     async update(request, response) {
         try {
-            const { endereco, entregue } = request.body
+            const { endereco, entregue, devolvida } = request.body
             const { id } = request.params
 
             const result = await prisma.entrega.update({
@@ -46,7 +47,8 @@ class EntregaController {
                 },
                 data: {
                     endereco,
-                    entregue
+                    entregue,
+                    devolvida
                 },
             });
 
