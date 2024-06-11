@@ -35,6 +35,8 @@ model Entrega {
     endereco String
     entregue  Boolean
     devolvida  Boolean
+    destinatarioId String
+    usuarioId String
     @@map("entrega")
 }
 

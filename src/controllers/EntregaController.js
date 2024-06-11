@@ -4,13 +4,15 @@ const prisma = new PrismaClient();
 class EntregaController {
     async create(request, response) {
         try {
-            const { endereco, entregue, devolvida } = request.body
+            const { endereco, entregue, devolvida, destinatarioId, usuarioId } = request.body
 
             const entrega = await prisma.entrega.create({
                 data: {
                     endereco,
                     entregue,
-                    devolvida
+                    devolvida,
+                    destinatarioId,
+                    usuarioId,
                 },
             })
 
@@ -38,7 +40,7 @@ class EntregaController {
 
     async update(request, response) {
         try {
-            const { endereco, entregue, devolvida } = request.body
+            const { endereco, entregue, devolvida, destinatarioId, usuarioId } = request.body
             const { id } = request.params
 
             const result = await prisma.entrega.update({
@@ -48,7 +50,9 @@ class EntregaController {
                 data: {
                     endereco,
                     entregue,
-                    devolvida
+                    devolvida,
+                    destinatarioId,
+                    usuarioId
                 },
             });
 
