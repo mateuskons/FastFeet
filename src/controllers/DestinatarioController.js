@@ -8,13 +8,15 @@ class DestinatarioController {
 
     async create(request, response) {
         try {
-            const { nome, telefone, endereco, CEP } = request.body
+            const { nome, telefone, rua, numero, CEP, complemento } = request.body
 
             const destinatario = await prisma.destinatario.create({
                 data: {
                     nome,
                     telefone,
-                    endereco,
+                    rua,
+                    numero,
+                    complemento,
                     CEP
                 },
             })
@@ -42,7 +44,7 @@ class DestinatarioController {
     async update(request, response) {
         try {
 
-            const { nome, telefone, endereco, CEP } = request.body
+            const { nome, telefone, rua, numero, CEP, complemento } = request.body
             const { id } = request.params
 
             const result = await prisma.destinatario.update({
@@ -52,8 +54,10 @@ class DestinatarioController {
                 data: {
                     nome: nome,
                     telefone: telefone,
-                    endereco: endereco,
-                    CEP: CEP,
+                    rua: rua,
+                    numero: numero,
+                    complemento: complemento,
+                    CEP: CEP
                 },
             });
 

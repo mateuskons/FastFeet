@@ -44,7 +44,9 @@ model Destinatario {
     id String @id @default(uuid())
     nome String
     telefone String
-    endereco String
+    rua String
+    numero Int
+    complento String
     CEP String
     @@map("destinatario")
 }
