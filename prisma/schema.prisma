@@ -46,7 +46,7 @@ model Destinatario {
     telefone String
     rua String
     numero Int
-    complento String
+    complemento String
     CEP String
     @@map("destinatario")
 }

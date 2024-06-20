@@ -1,14 +1,11 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const bcrypt = require('bcrypt');
-const jsonwebtoken = require('jsonwebtoken');
-const privateKey = require("../private-key")
 
 class DestinatarioController {
 
     async create(request, response) {
         try {
-            const { nome, telefone, rua, numero, CEP, complemento } = request.body
+            const { nome, telefone, rua, numero, complemento, CEP} = request.body
 
             const destinatario = await prisma.destinatario.create({
                 data: {
