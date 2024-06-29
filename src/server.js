@@ -7,13 +7,16 @@ const express = require('express')
 // Index das routes
 const routes = require('./routes')
 
+const cors = require('cors')
 
 const app = express()
+
+app.use(cors())
+
 app.use(express.json())
 
 app.use(
-    jwt({ secret: privateKey, algorithms: ['HS256']}).unless({ path: [ '/usuario/login',
-      '/admin/create', '/admin/login', '/admin/update', '/admin/delete', '/admin/show'] })
+    jwt({ secret: privateKey, algorithms: ['HS256']}).unless({ path: [ '/usuario/login', '/admin/login', '/admin/create'] })
 );
 
 app.use(function (err, req, res, next) {
@@ -28,3 +31,4 @@ app.use(routes)
 
 const PORT = 3333
 app.listen(PORT, () => console.log(`Server is running on Port ${PORT}`))
+

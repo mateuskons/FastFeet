@@ -16,7 +16,7 @@ usuarioRoutes.post('/create', usuarioController.create)
 usuarioRoutes.get('/show', usuarioController.show)
 usuarioRoutes.put('/update/:id', usuarioController.update)
 usuarioRoutes.delete('/delete/:id', usuarioController.delete)
-usuarioRoutes.post('/login', usuarioController.login)
+usuarioRoutes.post('/login', usuarioController.login)//entregador
 
 // Exporta
 module.exports = usuarioRoutes

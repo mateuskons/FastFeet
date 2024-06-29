@@ -37,6 +37,7 @@ model Entrega {
     devolvida  Boolean
     destinatarioId String
     usuarioId String
+    destinatario   Destinatario @relation(fields: [destinatarioId], references: [id])
     @@map("entrega")
 }
 
@@ -48,5 +49,6 @@ model Destinatario {
     numero Int
     complemento String
     CEP String
+    entregas Entrega[]
     @@map("destinatario")
 }

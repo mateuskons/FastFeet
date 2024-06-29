@@ -28,7 +28,8 @@ class DestinatarioController {
 
     async show(request, response) {
         try {
-            const destinatarios = await prisma.destinatario.findMany();
+            const { id } = request.params
+            const destinatarios = await prisma.destinatario.findFirst({id});
 
             response.json(destinatarios)
 

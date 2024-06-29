@@ -38,6 +38,20 @@ class EntregaController {
         }
     }
 
+    async show(request, response) {
+        try {
+            const { usuarioId } = request.params
+            const entregas = await prisma.entrega.findMany({ where: { usuarioId },
+            include: { destinatario: true } }) 
+
+            response.json(entregas)
+
+        } catch (err) {
+            console.log(err)
+            return response.status(409).send()
+        }
+    }
+
     async update(request, response) {
         try {
             const { endereco, entregue, devolvida, destinatarioId, usuarioId } = request.body

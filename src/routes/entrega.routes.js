@@ -14,7 +14,8 @@ const entregaController = new EntregaController()
 // Rotas
 entregaRoutes.post('/create', entregaController.create)
 entregaRoutes.get('/showEntrega/:id', entregaController.showEntrega)
-entregaRoutes.put('/update/:id', entregaController.update)
+entregaRoutes.get('/show/:usuarioId', entregaController.show)
+entregaRoutes.put('/update/:id', entregaController.update)//entregador
 entregaRoutes.delete('/delete/:id', entregaController.delete)
 
 // Exporta
