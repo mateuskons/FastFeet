@@ -5,7 +5,7 @@ class DestinatarioController {
 
     async create(request, response) {
         try {
-            const { nome, telefone, rua, numero, complemento, CEP} = request.body
+            const { nome, telefone, rua, numero, complemento, cep} = request.body
 
             const destinatario = await prisma.destinatario.create({
                 data: {
@@ -14,7 +14,7 @@ class DestinatarioController {
                     rua,
                     numero,
                     complemento,
-                    CEP
+                    cep
                 },
             })
 
@@ -39,10 +39,23 @@ class DestinatarioController {
         }
     }
 
+    async showDestinatarios(request, response) {
+        try {
+            
+            const destinatarios = await prisma.destinatario.findMany();
+
+            response.json(destinatarios)
+
+        } catch (err) {
+            console.log(err)
+            return response.status(409).send()
+        }
+    }
+
     async update(request, response) {
         try {
 
-            const { nome, telefone, rua, numero, CEP, complemento } = request.body
+            const { nome, telefone, rua, numero, cep, complemento } = request.body
             const { id } = request.params
 
             const result = await prisma.destinatario.update({
@@ -55,7 +68,7 @@ class DestinatarioController {
                     rua: rua,
                     numero: numero,
                     complemento: complemento,
-                    CEP: CEP
+                    cep: cep
                 },
             });
 

@@ -8,7 +8,6 @@ class EntregaController {
 
             const entrega = await prisma.entrega.create({
                 data: {
-                    endereco,
                     entregue,
                     devolvida,
                     destinatarioId,
@@ -62,7 +61,6 @@ class EntregaController {
                     id
                 },
                 data: {
-                    endereco,
                     entregue,
                     devolvida,
                     destinatarioId,

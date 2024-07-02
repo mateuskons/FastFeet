@@ -33,7 +33,16 @@ class UsuarioController {
 
     async show(request, response) {
         try {
-            const usuarios = await prisma.usuario.findMany();
+            const usuarios = await prisma.usuario.findMany({
+                select: {
+                    id: true,
+                    nome: true,
+                    cpf: true,
+                    telefone: true
+                    
+                  },
+            });
+
 
             response.json(usuarios)
 

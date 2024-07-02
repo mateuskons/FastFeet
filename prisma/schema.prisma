@@ -32,7 +32,6 @@ model Admin {
 
 model Entrega {
     id String @id @default(uuid())
-    endereco String
     entregue  Boolean
     devolvida  Boolean
     destinatarioId String
@@ -46,9 +45,9 @@ model Destinatario {
     nome String
     telefone String
     rua String
-    numero Int
+    numero String
     complemento String
-    CEP String
+    cep String
     entregas Entrega[]
     @@map("destinatario")
 }

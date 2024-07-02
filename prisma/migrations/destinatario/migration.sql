@@ -6,7 +6,7 @@ CREATE TABLE "destinatario" (
     "rua" TEXT NOT NULL,
     "numero" TEXT NOT NULL,
     "complemento" TEXT NOT NULL,
-    "CEP" TEXT NOT NULL,
+    "cep" TEXT NOT NULL,
 
     CONSTRAINT "destinatario_pkey" PRIMARY KEY ("id")
 );

@@ -1,6 +1,5 @@
 CREATE TABLE "entrega" (
     "id" TEXT NOT NULL,
-    "endereco" TEXT NOT NULL,
     "entregue" BOOLEAN NOT NULL,
     "devolvida" BOOLEAN NOT NULL,
     "destinatarioId" TEXT NOT NULL REFERENCES destinatario(id),
